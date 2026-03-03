@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UK Kaçış Planı 🇬🇧</title>
+<style>
+body {
+  background: linear-gradient(to right, #012169, #C8102E);
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  padding-top: 100px;
+}
+#countdown {
+  font-size: 50px;
+  margin-top: 30px;
+}
+</style>
+</head>
+<body>
+
+<h1>🇬🇧 İngiltere Macerasına Kalan Süre 🇬🇧</h1>
+<h2>Sayın Sevgilim, Bavulu Hazırla 😌</h2>
+
+<div id="countdown"></div>
+
+<script>
+const tripDate = new Date("2026-04-20T10:00:00").getTime(); // BURAYI DEĞİŞTİR
+
+setInterval(function() {
+  const now = new Date().getTime();
+  const distance = tripDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / 1000 / 60) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  document.getElementById("countdown").innerHTML =
+  days + " gün " + hours + " saat " +
+  minutes + " dakika " + seconds + " saniye ❤️";
+}, 1000);
+</script>
+
+</body>
+</html>
