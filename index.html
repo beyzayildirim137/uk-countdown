@@ -41,6 +41,24 @@ setInterval(function() {
   minutes + " dakika " + seconds + " saniye ❤️";
 }, 1000);
 </script>
+<div id="catContainer" style="margin-top:50px;">
+  <img src="happycat.gif" width="250">
+</div>
 
+<button onclick="startParty()" 
+style="padding:15px; font-size:20px; border:none; border-radius:10px; cursor:pointer; margin-top:30px;">
+🎉 Sürprizi Başlat 🎉
+</button>
+
+<audio id="bgMusic" loop>
+  <source src="happy.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startParty() {
+  document.getElementById("bgMusic").play();
+  document.getElementById("catContainer").style.display = "block";
+}
+</script>
 </body>
 </html>
