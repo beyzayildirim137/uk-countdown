@@ -58,7 +58,7 @@ button {
 <div id="planeContainer">
   <img id="plane" src="plane.png" alt="Uçak">
 </div>
-
+<audio id="planeSound" src="plane-sound.m4a" loop></audio>
 <button onclick="startParty()">🎉 UCUURRR BIZIII 🎉</button>
 
 <script>
@@ -78,10 +78,16 @@ setInterval(() => {
   countdownEl.innerHTML = `${days} gün ${hours} saat ${minutes} dakika ${seconds} saniye ❤️`;
 }, 1000);
 
-// Uçak animasyonu
+// Uçak animasyonu + müzik
 function startParty() {
   const plane = document.getElementById('planeContainer');
+  const sound = document.getElementById('planeSound');
+
   plane.style.display = 'block';
+
+  // Ses başlat
+  sound.currentTime = 0; // Baştan çal
+  sound.play();
 
   // Animasyonu resetle
   plane.style.animation = 'none';
