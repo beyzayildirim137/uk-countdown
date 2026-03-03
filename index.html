@@ -10,6 +10,13 @@ body {
   overflow: hidden;
   position: relative;
   height: 100vh;
+  text-align: center;
+}
+
+#countdown {
+  font-size: 40px;
+  margin-top: 50px;
+  color: #333;
 }
 
 #planeContainer {
@@ -52,7 +59,8 @@ button {
 </head>
 <body>
 
-<h1 style="text-align:center; margin-top:50px;">✈️ UK Macerasına Kalan Süre ✈️</h1>
+<h1>✈️ UK Macerasına Kalan Süre ✈️</h1>
+<div id="countdown"></div>
 
 <div id="planeContainer">
   <img id="plane" src="plane.png" alt="Uçak">
@@ -63,14 +71,29 @@ button {
 <button onclick="startParty()">🎉 Sürprizi Başlat 🎉</button>
 
 <script>
+// Geri sayım
+const tripDate = new Date("2026-07-15T10:00:00").getTime(); // Uçuş tarihini değiştir
+const countdownEl = document.getElementById("countdown");
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = tripDate - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance / (1000*60*60)) % 24);
+  const minutes = Math.floor((distance / (1000*60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  countdownEl.innerHTML = `${days} gün ${hours} saat ${minutes} dakika ${seconds} saniye ❤️`;
+}, 1000);
+
+// Uçak animasyonu
 function startParty() {
   const plane = document.getElementById('planeContainer');
   plane.style.display = 'block';
 
-  // Animasyonu resetlemek için önce kaldırıyoruz
+  // Animasyonu resetle
   plane.style.animation = 'none';
-
-  // Tarayıcının animasyonu yeniden algılaması için kısa bir gecikme
   setTimeout(() => {
     plane.style.animation = 'fly 4s linear forwards';
   }, 10);
