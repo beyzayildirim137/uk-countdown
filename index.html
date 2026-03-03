@@ -1,64 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>UK Kaçış Planı 🇬🇧</title>
+<title>UK Macerası 🚀</title>
 <style>
 body {
-  background: linear-gradient(to right, #012169, #C8102E);
-  color: white;
-  font-family: Arial;
-  text-align: center;
-  padding-top: 100px;
+  background: linear-gradient(to top, #87CEEB, #fff);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
 }
-#countdown {
-  font-size: 50px;
-  margin-top: 30px;
+
+#planeContainer {
+  position: absolute;
+  display: none; /* Animasyon başlamadan gizli */
+  top: 30%;
+  right: -250px;
+  width: 250px;
+}
+
+#plane {
+  width: 100%;
+}
+
+.kafa {
+  position: absolute;
+  width: 50px;
+  border-radius: 50%;
+  top: -20px; /* Uçağın üstüne yerleştir */
+}
+
+@keyframes fly {
+  0% { right: -250px; }
+  100% { right: 100vw; }
+}
+
+button {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #ffdd00;
 }
 </style>
 </head>
 <body>
 
-<h1>🇬🇧 UK Macerasına Kalan Süre 🇬🇧</h1>
-<h2> BAAALIIIIMMM Bavulu Hazırla 😌</h2>
+<h1 style="text-align:center; margin-top:50px;">✈️ UK Macerasına Kalan Süre ✈️</h1>
 
-<div id="countdown"></div>
-
-<script>
-const tripDate = new Date("2026-04-20T10:00:00").getTime(); // BURAYI DEĞİŞTİR
-
-setInterval(function() {
-  const now = new Date().getTime();
-  const distance = tripDate - now;
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / 1000 / 60) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  document.getElementById("countdown").innerHTML =
-  days + " gün " + hours + " saat " +
-  minutes + " dakika " + seconds + " saniye ❤️";
-}, 1000);
-</script>
-<div id="catContainer" style="margin-top:50px;">
-  <img src="happycat.gif" width="250">
+<div id="planeContainer">
+  <img id="plane" src="plane.png" alt="Uçak">
+  <img class="kafa" src="kafa1.png" style="left: 30px;">
+  <img class="kafa" src="kafa2.png" style="left: 150px;">
 </div>
 
-<button onclick="startParty()" 
-style="padding:15px; font-size:20px; border:none; border-radius:10px; cursor:pointer; margin-top:30px;">
-🎉 Sürprizi Başlat 🎉
-</button>
-
-<audio id="bgMusic" loop>
-  <source src="happy.mp3" type="audio/mpeg">
-</audio>
+<button onclick="startParty()">🎉 Sürprizi Başlat 🎉</button>
 
 <script>
 function startParty() {
-  document.getElementById("bgMusic").play();
-  document.getElementById("catContainer").style.display = "block";
+  // Uçak ve kafaları göster ve animasyonu başlat
+  const plane = document.getElementById('planeContainer');
+  plane.style.display = 'block';
+  plane.style.animation = 'fly 4s linear forwards';
 }
 </script>
+
 </body>
 </html>
