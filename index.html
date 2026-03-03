@@ -64,10 +64,16 @@ button {
 
 <script>
 function startParty() {
-  // Uçak ve kafaları göster ve animasyonu başlat
   const plane = document.getElementById('planeContainer');
   plane.style.display = 'block';
-  plane.style.animation = 'fly 4s linear forwards';
+
+  // Animasyonu resetlemek için önce kaldırıyoruz
+  plane.style.animation = 'none';
+
+  // Tarayıcının animasyonu yeniden algılaması için kısa bir gecikme
+  setTimeout(() => {
+    plane.style.animation = 'fly 4s linear forwards';
+  }, 10);
 }
 </script>
 
