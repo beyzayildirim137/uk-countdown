@@ -83,17 +83,19 @@ function startParty() {
   const plane = document.getElementById('planeContainer');
   const sound = document.getElementById('planeSound');
 
+  // Animasyonu resetle
   plane.style.display = 'block';
+  plane.style.animation = 'none';
+  
+  // Force reflow → animasyonun yeniden başlaması için
+  void plane.offsetWidth;
+
+  plane.style.animation = 'fly 4s linear forwards';
 
   // Ses başlat
-  sound.currentTime = 0; // Baştan çal
-  sound.play();
-
-  // Animasyonu resetle
-  plane.style.animation = 'none';
-  setTimeout(() => {
-    plane.style.animation = 'fly 4s linear forwards';
-  }, 10);
+  sound.pause();
+  sound.currentTime = 0;
+  sound.play().catch(e => console.log("Ses çalınamadı:", e));
 }
 </script>
 
